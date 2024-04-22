@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.BEAN.Categoria;
 import model.BEAN.Produto;
 import model.DAO.ProdutoDAO;
 
@@ -33,16 +34,18 @@ public class MasculinoController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         String url = "/WEB-INF/jsp/masculino.jsp";
-        
-        ProdutoDAO dao = new ProdutoDAO();
-        List<Produto> produtos = dao.listarTodos();
-        
-        request.setAttribute("produtos", produtos);
-        
-        RequestDispatcher d = getServletContext().getRequestDispatcher(url);
-        d.forward(request, response);
+    
+    Categoria categoriaMasculina = new Categoria();
+    categoriaMasculina.setNome("Masculino"); // Supondo que o nome da categoria masculina seja "Masculino"
+    
+    ProdutoDAO dao = new ProdutoDAO();
+    List<Produto> produtos = dao.listarPorCategoria(categoriaMasculina);
+    
+    request.setAttribute("produtos", produtos);
+    
+    RequestDispatcher d = getServletContext().getRequestDispatcher(url);
+    d.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

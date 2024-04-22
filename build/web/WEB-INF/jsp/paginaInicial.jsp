@@ -4,6 +4,9 @@
     Author     : Senai
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="model.BEAN.Produto"%>
+<%@page import="model.BEAN.Produto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -44,7 +47,7 @@
                         <li><a class="dropdown-item" href="#"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
                     </ul>
                 </div>
-                
+
                 <button type="button" class="btn btn-light"><i class="fa-solid fa-star"></i> Destaques</button>
 
                 <div class="dropdown">
@@ -85,7 +88,7 @@
             </div>
 
             <div class="title-novidades">
-                <h1>Novidades</h1>
+                <h1>Novidades em Breve</h1>
             </div>
 
             <div class="card-group" id="group-card">
@@ -115,54 +118,22 @@
             </div>
 
             <div class="destaques">
-                <div class="card-group">
-
-                    <a href="./produto" class="container-cards">
-                        <div class="card" id="card-destaque-1">
-                            <img src="./images/Vans/vans-1.jpg" alt=""/>
-                            <div class="card-body">
-                                <p class="card-text">Tênis Vans Chukka Low Skate Sidestripe</p>
-                                <p class="card-preco">Valor: R$449,99</p>
-                                <button class="btn">Comprar</button>
-                            </div>
+                <div class="card-group-des">
+                    <!-- Iterar sobre a lista de produtos e exibir cada produto -->
+                    <% for (Produto produto : (List<Produto>) request.getAttribute("produtos")) {%>
+                    <div class="card" style="width: 18rem;" id="card-des">
+                        <div class="card-img">
+                            <img src="./images/Vans/vans-1.jpg" class="card-img-top" alt="...">
                         </div>
-                    </a>
-
-                    <a href="./produto" class="container-cards">
-                        <div class="card">
-                            <img src="./images/Freeday/freeday-1.jpg" alt=""/>
-                            <div class="card-body">
-                                <p class="card-text">Tênis Freeday Switch Preto Preto</p>
-                                <p class="card-preco">Valor: R$399,99</p>
-                                <button class="btn">Comprar</button>
-                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= produto.getNome()%></h5>
+                            <p class="card-text">Preço = $<%= produto.getValor()%></p>
+                            <a href="#" class="btn btn-primary">Comprar/Add Carrinho</a>
                         </div>
-                    </a>
-
-                    <a href="./produto" class="container-cards">
-                        <div class="card">
-                            <img src="./images/Cariuma/cariuma-1.jpg" alt=""/>
-                            <div class="card-body">
-                                <p class="card-text">Tênis Cariuma Catiba Pro Off White Gum</p>
-                                <p class="card-preco">Valor: R$599,99</p>
-                                <button class="btn">Comprar</button>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="./produto" class="container-cards">
-                        <div class="card">
-                            <img src="./images/OUS/ous-1.jpg" alt=""/>
-                            <div class="card-body">
-                                <p class="card-text">Tênis Ous Imigrante Essencial Gelo Laranja</p>
-                                <p class="card-preco">Valor: R$399,99</p>
-                                <button class="btn">Comprar</button>
-                            </div>
-                        </div>
-                    </a> 
+                    </div>
+                    <% }%>
                 </div>
-            </div>
-
+            </div>   
         </main>
 
         <footer class="footer">

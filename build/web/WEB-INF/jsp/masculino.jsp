@@ -62,20 +62,20 @@
         </header>
 
         <main class="main">
-            
+
             <div class="container">
                 <c:forEach items="${produtos}" var="produto">
-                <a href="./produto?id=${produto.idProduto}">
-                    <div class="card" style="width: 18rem;">
-                        <img src="./images/Vans/vans-1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">${produto.nome}</h5>
-                          <p class="card-text">Preco = $${produto.valor}</p>
-                          <a href="#" class="btn btn-primary">Comprar/Add Carrinho</a>
+                    <a href="./produto?id=${produto.idProduto}">
+                        <div class="card" style="width: 18rem;">
+                            <img src="./images/Vans/vans-1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">${produto.nome}</h5>
+                                <p class="card-text">Preco = $${produto.valor}</p>
+                                <a href="#" class="btn btn-primary">Comprar/Add Carrinho</a>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </c:forEach>
+                    </a>
+                </c:forEach>
             </div>
         </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

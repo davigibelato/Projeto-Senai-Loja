@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.BEAN.Categoria;
 import model.BEAN.Produto;
 import model.DAO.ProdutoDAO;
 
@@ -36,8 +37,11 @@ public class FemininoController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = "/WEB-INF/jsp/feminino.jsp";
 
+        Categoria categoriaFeminina = new Categoria();
+        categoriaFeminina.setNome("Feminino"); // Supondo que o nome da categoria feminina seja "Feminino"
+
         ProdutoDAO dao = new ProdutoDAO();
-        List<Produto> produtos = dao.listarTodos();
+        List<Produto> produtos = dao.listarPorCategoria(categoriaFeminina);
 
         request.setAttribute("produtos", produtos);
 
