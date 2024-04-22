@@ -41,12 +41,23 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="./masculino"><i class="fa-solid fa-person"></i>Masculino</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-person-dress"></i>Feminino</a></li>
+                        <li><a class="dropdown-item" href="./feminino"><i class="fa-solid fa-person-dress"></i>Feminino</a></li>
                         <li><a class="dropdown-item" href="#"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
                     </ul>
                 </div>
+                
                 <button type="button" class="btn btn-light"><i class="fa-solid fa-star"></i> Destaques</button>
-                <button type="button" class="btn btn-light"><i class="fa-solid fa-cart-shopping"></i> Carrinho</button>
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-cart-shopping"></i>Carrinho
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="./masculino"><i class="fa-solid fa-person"></i>Masculino</a></li>
+                        <li><a class="dropdown-item" href="./feminino"><i class="fa-solid fa-person-dress"></i>Feminino</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
+                    </ul>
+                </div>
                 <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i> Minha conta</button>
             </div>    
         </header>
@@ -55,26 +66,13 @@
             <div class="container">
                 <div class="right-box">
                     <div class="main-image-box">
-                        <img src="./images/Vans/vans-1.jpg" alt="" class="main-image"/>
-                    </div>
-                    <div class="small-images">
-                        <div class="image-box"><img src="./images/Vans/vans-2.jpg" alt="" class="image"/></div>
-                        <div class="image-box"><img src="./images/Vans/vans-3.jpg" alt="" class="image"/></div>
-                        <div class="image-box"><img src="./images/Vans/vans-4.jpg" alt="" class="image" /></div>
-                        <div class="image-box"><img src="./images/Vans/vans-5.jpg" alt="" class="image"/></div>
+                        <img src="${produto.imagem}" alt="${produto.nome}" class="main-image"/>
                     </div>
                 </div>
                 <div class="details-box">
-                    <h1>Tênis Freeday Switch Preto Preto</h1>
+                    <h1>${produto.nome}</h1>
                     <h3>Preço:</h3>
-                    <h3>$ 344.99</h3>
-                    <h4>Quantidade</h4>
-                    <div class="add">
-                        <button>+</button>
-                        <p>90</p>
-                        <button>-</button>
-                    </div>
-
+                    <h3>$ ${produto.valor}</h3>
                     <button>Adicionar ao carrinho</button>
                 </div>
             </div>

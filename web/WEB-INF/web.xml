@@ -36,6 +36,10 @@
         <servlet-name>MasculinoController</servlet-name>
         <servlet-class>controller.MasculinoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FemininoController</servlet-name>
+        <servlet-class>controller.FemininoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>MasculinoController</servlet-name>
         <url-pattern>/masculino</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FemininoController</servlet-name>
+        <url-pattern>/feminino</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

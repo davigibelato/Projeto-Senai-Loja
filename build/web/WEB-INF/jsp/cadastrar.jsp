@@ -47,5 +47,6 @@
             <img src="images/login_img02.png" alt=""/>
         </div>
     </main>
+        <script src="./../scripts/cadastro.js" type="text/javascript"></script>
     </body>
 </html>

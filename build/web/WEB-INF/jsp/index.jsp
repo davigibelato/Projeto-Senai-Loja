@@ -14,7 +14,7 @@
     <body>
     <main class="main">
         <div class="container-login">
-            <form action="login" method="get">
+            <form action="login" method="get" name="f1">
                 <h1 class="login-h1">Login</h1>
                 <div class="input-field">
                     <i class="fa-solid fa-user" id="icone-user"></i>
@@ -32,6 +32,6 @@
             <img src="images/login_img02.png" alt=""/>
         </div>
     </main>
-    <script src="scripts/script.js" type="text/javascript"></script>
+    <script src="./../scripts/login.js" type="text/javascript"></script>
 </body>
 </html>

@@ -40,12 +40,23 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="./masculino"><i class="fa-solid fa-person"></i>Masculino</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-person-dress"></i>Feminino</a></li>
+                        <li><a class="dropdown-item" href="./feminino"><i class="fa-solid fa-person-dress"></i>Feminino</a></li>
                         <li><a class="dropdown-item" href="#"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
                     </ul>
                 </div>
+                
                 <button type="button" class="btn btn-light"><i class="fa-solid fa-star"></i> Destaques</button>
-                <button type="button" class="btn btn-light"><i class="fa-solid fa-cart-shopping"></i> Carrinho</button>
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-cart-shopping"></i>Carrinho
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="./masculino"><i class="fa-solid fa-person"></i>Masculino</a></li>
+                        <li><a class="dropdown-item" href="./feminino"><i class="fa-solid fa-person-dress"></i>Feminino</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
+                    </ul>
+                </div>
                 <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i> Minha conta</button>
             </div>    
         </header>

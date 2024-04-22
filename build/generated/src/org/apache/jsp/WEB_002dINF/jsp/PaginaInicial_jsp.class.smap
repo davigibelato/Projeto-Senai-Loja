@@ -1,10 +1,10 @@
 SMAP
-PaginaInicial_jsp.java
+paginaInicial_jsp.java
 JSP
 *S JSP
 *F
-+ 0 PaginaInicial.jsp
-WEB-INF/jsp/PaginaInicial.jsp
++ 0 paginaInicial.jsp
+WEB-INF/jsp/paginaInicial.jsp
 *L
-5,15:44
+5,167:44
 *E
