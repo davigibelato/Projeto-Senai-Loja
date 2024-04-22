@@ -1,0 +1,70 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    margin: 20px 200px;
+    display: flex;
+
+}
+
+.right-box{
+    width: 50%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.main-image-box{
+   padding: 30px 0px;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center; 
+}
+.main-image{
+    height: 390px;
+    width: auto;
+}
+
+.small-images{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    align-items: center;
+}
+
+.image-box{
+    margin: 0px 8px 8px 0px;
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image{
+    height: 90%;
+    width: auto;
+}
+
+.details-box{
+    width: 50%;
+    padding-left: 50px; 
+}
+
+.add{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 29.55%;
+    gap: 20px;
+    
+}
+.add button{
+    width: 40%;
+}
