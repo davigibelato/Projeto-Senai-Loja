@@ -128,12 +128,12 @@
                         <div class="card-body">
                             <h5 class="card-title"><%= produto.getNome()%></h5>
                             <p class="card-text">Preço = $<%= produto.getValor()%></p>
-                            <a href="#" class="btn btn-primary">Comprar/Add Carrinho</a>
+                            <a href="./produto?id=<%= produto.getIdProduto()%>" class="btn btn-primary">Comprar</a>
                         </div>
                     </div>
                     <% }%>
                 </div>
-            </div>   
+            </div>  
         </main>
 
         <footer class="footer">

@@ -1,4 +1,4 @@
-
+/*drop database banco_ds;*/
 create database banco_ds;
 use banco_ds;
 
@@ -78,7 +78,14 @@ create table produto_pedido (
 INSERT INTO categoria (nome) VALUES 
 ('Masculino'),
 ('Feminino'),
-('Calçados');
+('Calçados'),
+('Destaques');
 
 INSERT INTO usuario (nome, email, senha, cpf, telefone) VALUES 
 ('davi', 'davi@example.com', 'davi', '12345678901', '11912345678');
+
+INSERT INTO produto (nome, valor, categoria, imagem) VALUES 
+('Camiseta Masculina', 140.00, 1, NULL),
+('Camiseta Feminina', 100.00, 2, NULL),
+('Tenis Ous', 240.00, 3, NULL),
+('Tenis Hocks', 240.00, 4, NULL);
