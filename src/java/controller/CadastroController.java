@@ -79,16 +79,6 @@ public class CadastroController extends HttpServlet {
             String cpf = request.getParameter("input-cpf");
             String telefone = request.getParameter("input-telefone");
 
-            if (nome == null || nome.isEmpty() || email == null || email.isEmpty()
-                    || senha == null || senha.isEmpty() || cpf == null || cpf.isEmpty()
-                    || telefone == null || telefone.isEmpty()) {
-                nextPage = "/WEB-INF/jsp/cadastrar.jsp";
-                request.setAttribute("errorMessage", "Por favor, preencha todos os campos.");
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
-                dispatcher.forward(request, response);
-                return;
-            }
-
             Usuario u = new Usuario();
             UsuarioDAO ud = new UsuarioDAO();
 
