@@ -1,11 +1,10 @@
 <%-- 
-    Document   : feminino
-    Created on : 22/04/2024, 14:27:28
+    Document   : masculino
+    Created on : 15/04/2024, 15:28:18
     Author     : Senai
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,7 +17,7 @@
         <link href="./styles/header.css" rel="stylesheet" type="text/css"/>
         <script src="https://kit.fontawesome.com/35f5de594d.js" crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
-        <title>Gibelato Store Feminino</title>
+        <title>Gibelato Store Masculino</title>
     </head>
     <body>
         <div class="container-1">
@@ -42,7 +41,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="./masculino"><i class="fa-solid fa-person"></i>Masculino</a></li>
                         <li><a class="dropdown-item" href="./feminino"><i class="fa-solid fa-person-dress"></i>Feminino</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
+                        <li><a class="dropdown-item" href="./calcados"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
                     </ul>
                 </div>
                 
@@ -53,9 +52,9 @@
                         <i class="fa-solid fa-cart-shopping"></i>Carrinho
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="./masculino"><i class="fa-solid fa-person"></i>Masculino</a></li>
-                        <li><a class="dropdown-item" href="./feminino"><i class="fa-solid fa-person-dress"></i>Feminino</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
                     </ul>
                 </div>
                 <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i> Minha conta</button>
@@ -66,19 +65,19 @@
 
             <div class="container">
                 <c:forEach items="${produtos}" var="produto">
-                    <a href="">
+                    <a href="./produto?id=${produto.idProduto}">
                         <div class="card" style="width: 18rem;">
                             <img src="./images/Vans/vans-1.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">${produto.nome}</h5>
                                 <p class="card-text">Preco = $${produto.valor}</p>
-                                <a href="#" class="btn btn-primary">Comprar/Add Carrinho</a>
+                                <a href="./produto?id=${produto.idProduto}" class="btn btn-primary">Comprar/Add Carrinho</a>
                             </div>
                         </div>
                     </a>
                 </c:forEach>
             </div>
         </main>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>

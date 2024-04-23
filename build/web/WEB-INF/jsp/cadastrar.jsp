@@ -15,38 +15,43 @@
     </head>
     <body>
         <main class="main">
-        <div class="container-cadastrar">
-            <form action="cadastrar" method="post">
-                <h1 class="Cadastrar-h1">Cadastrar</h1>
-            <div class="input-field">
-                <i class="fa-solid fa-user" id="icone-user"></i>
-                <input type="text" placeholder="Username" id="input-nome" name="input-nome">
+            <div class="container-cadastrar">
+                <form action="cadastrar" method="post">
+                    <% if (request.getAttribute("errorMessage") != null) { %>
+                    <div class="error-message">
+                        <%= request.getAttribute("errorMessage") %>
+                    </div>
+                    <% } %>    
+                    <h1 class="Cadastrar-h1">Cadastrar</h1>
+                    <div class="input-field">
+                        <i class="fa-solid fa-user" id="icone-user"></i>
+                        <input type="text" placeholder="Username" id="input-nome" name="input-nome">
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="text" placeholder="Email" id="input-email"  name="input-email">
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock" id="icone-senha"></i>
+                        <input type="password" placeholder="Password" id="input-senha"  name="input-senha">
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-key"></i>
+                        <input type="text" placeholder="Cpf" id="input-cpf"  name="input-cpf">
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="text" placeholder="Phone" id="input-telefone"  name="input-telefone">
+                    </div>
+                    <button class="btn-cadastrar" type="submit">Cadastrar</button>
+                    <p>Se já possui cadastro <a href="./login">clique aqui</a></p>
+
             </div>
-            <div class="input-field">
-                <i class="fa-solid fa-envelope"></i>
-                <input type="text" placeholder="Email" id="input-email"  name="input-email">
-            </div>
-            <div class="input-field">
-                <i class="fa-solid fa-lock" id="icone-senha"></i>
-                <input type="password" placeholder="Password" id="input-senha"  name="input-senha">
-            </div>
-            <div class="input-field">
-                <i class="fa-solid fa-key"></i>
-                <input type="text" placeholder="Cpf" id="input-cpf"  name="input-cpf">
-            </div>
-            <div class="input-field">
-                <i class="fa-solid fa-phone"></i>
-                <input type="text" placeholder="Phone" id="input-telefone"  name="input-telefone">
-            </div>
-                <button class="btn-cadastrar" type="submit">Cadastrar</button>
-            <p>Se já possui cadastro <a href="./login">clique aqui</a></p>
-            
-        </div>
-            </form>
+        </form>
         <div class="container-img">
             <img src="images/login_img02.png" alt=""/>
         </div>
     </main>
-        <script src="./../scripts/cadastro.js" type="text/javascript"></script>
-    </body>
+    <script src="./../scripts/cadastro.js" type="text/javascript"></script>
+</body>
 </html>

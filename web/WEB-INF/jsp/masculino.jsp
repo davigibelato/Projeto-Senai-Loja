@@ -41,7 +41,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="./masculino"><i class="fa-solid fa-person"></i>Masculino</a></li>
                         <li><a class="dropdown-item" href="./feminino"><i class="fa-solid fa-person-dress"></i>Feminino</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
+                        <li><a class="dropdown-item" href="./calcados"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
                     </ul>
                 </div>
                 
@@ -52,9 +52,9 @@
                         <i class="fa-solid fa-cart-shopping"></i>Carrinho
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="./masculino"><i class="fa-solid fa-person"></i>Masculino</a></li>
-                        <li><a class="dropdown-item" href="./feminino"><i class="fa-solid fa-person-dress"></i>Feminino</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
                     </ul>
                 </div>
                 <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i> Minha conta</button>
@@ -71,7 +71,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">${produto.nome}</h5>
                                 <p class="card-text">Preco = $${produto.valor}</p>
-                                <a href="#" class="btn btn-primary">Comprar/Add Carrinho</a>
+                                <a href="./produto?id=${produto.idProduto}" class="btn btn-primary">Comprar/Add Carrinho</a>
                             </div>
                         </div>
                     </a>

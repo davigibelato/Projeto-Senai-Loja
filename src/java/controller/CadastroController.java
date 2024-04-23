@@ -31,10 +31,10 @@ public class CadastroController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String url = "/WEB-INF/jsp/cadastrar.jsp"; 
+
+        String url = "/WEB-INF/jsp/cadastrar.jsp";
         RequestDispatcher d = getServletContext().getRequestDispatcher(url);
         d.forward(request, response);
     }
@@ -65,39 +65,55 @@ public class CadastroController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        
+
         String url = request.getServletPath();
-        
-        if(url.equals("/cadastrar")){
-            
+
+        if (url.equals("/cadastrar")) {
+
             String nextPage = "/WEB-INF/jsp/index.jsp";
-            
+
+            // Verificar se todos os campos estão preenchidos
+            String nome = request.getParameter("input-nome");
+            String email = request.getParameter("input-email");
+            String senha = request.getParameter("input-senha");
+            String cpf = request.getParameter("input-cpf");
+            String telefone = request.getParameter("input-telefone");
+
+            if (nome == null || nome.isEmpty() || email == null || email.isEmpty()
+                    || senha == null || senha.isEmpty() || cpf == null || cpf.isEmpty()
+                    || telefone == null || telefone.isEmpty()) {
+                nextPage = "/WEB-INF/jsp/cadastrar.jsp";
+                request.setAttribute("errorMessage", "Por favor, preencha todos os campos.");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+                dispatcher.forward(request, response);
+                return;
+            }
+
             Usuario u = new Usuario();
             UsuarioDAO ud = new UsuarioDAO();
-            
-            u.setNome(request.getParameter("input-nome"));
-            u.setEmail(request.getParameter("input-email"));
-            u.setSenha(request.getParameter("input-senha"));
-            u.setCpf(request.getParameter("input-cpf"));
-            u.setTelefone(request.getParameter("input-telefone"));
-            
-            try{
+
+            u.setNome(nome);
+            u.setEmail(email);
+            u.setSenha(senha);
+            u.setCpf(cpf);
+            u.setTelefone(telefone);
+
+            try {
                 ud.create(u);
-                RequestDispatcher d = getServletContext().getRequestDispatcher(nextPage);
-                d.forward(request, response);
-                
-            }catch(Exception e){
-                
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+                dispatcher.forward(request, response);
+
+            } catch (Exception e) {
                 nextPage = "/WEB-INF/jsp/cadastrar.jsp";
                 request.setAttribute("errorMessage", "Cadastros não realizados corretamente");
-                RequestDispatcher d = getServletContext().getRequestDispatcher(nextPage);
-                d.forward(request, response);
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+                dispatcher.forward(request, response);
+                return; // Adicionando retorno após o tratamento de exceção
             }
-        }else{
-            processRequest(request, response);
         }
-        
+
+        // Movendo a chamada de processRequest para fora do bloco if
+        processRequest(request, response);
     }
 
     /**

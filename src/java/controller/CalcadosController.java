@@ -1,23 +1,27 @@
+package controller;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.BEAN.Categoria;
+import model.BEAN.Produto;
+import model.DAO.ProdutoDAO;
 
 /**
  *
- * @author Senai
+ * @author Davi
  */
-@WebServlet(name = "CalcadosController", urlPatterns = {"/calcados"})
 public class CalcadosController extends HttpServlet {
 
     /**
@@ -31,19 +35,18 @@ public class CalcadosController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CalcadosController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CalcadosController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        String url = "/WEB-INF/jsp/calcados.jsp";
+    
+    Categoria categoriaCalcados = new Categoria();
+    categoriaCalcados.setNome("Calcados"); 
+    
+    ProdutoDAO dao = new ProdutoDAO();
+    List<Produto> produtos = dao.listarPorCategoria(categoriaCalcados);
+    
+    request.setAttribute("produtos", produtos);
+    
+    RequestDispatcher d = getServletContext().getRequestDispatcher(url);
+    d.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

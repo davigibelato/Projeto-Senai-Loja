@@ -40,6 +40,10 @@
         <servlet-name>FemininoController</servlet-name>
         <servlet-class>controller.FemininoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CalcadosController</servlet-name>
+        <servlet-class>controller.CalcadosController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>FemininoController</servlet-name>
         <url-pattern>/feminino</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CalcadosController</servlet-name>
+        <url-pattern>/calcados</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

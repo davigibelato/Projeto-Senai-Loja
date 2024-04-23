@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import model.BEAN.Usuario;
 import model.DAO.UsuarioDAO;
 
-
 /**
  *
  * @author Senai
@@ -52,17 +51,29 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String url = request.getServletPath();
-        
+
         if (url.equals("/login")) {
             String nextPage = "/WEB-INF/jsp/paginaInicial.jsp";
-            
+
+            String username = request.getParameter("input-user");
+            String password = request.getParameter("input-senha");
+
+            // Verificar se os campos estão vazios
+            if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
+                nextPage = "/WEB-INF/jsp/index.jsp";
+                request.setAttribute("errorMessage", "Por favor, preencha todos os campos.");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+                dispatcher.forward(request, response);
+                return;
+            }
+
             Usuario user = new Usuario();
             UsuarioDAO valida = new UsuarioDAO();
 
-            user.setNome(request.getParameter("input-user"));
-            user.setSenha(request.getParameter("input-senha"));
+            user.setNome(username);
+            user.setSenha(password);
 
             try {
                 Usuario userAutenticado = valida.login(user);
@@ -70,7 +81,6 @@ public class LoginController extends HttpServlet {
                 if (userAutenticado != null && !userAutenticado.getNome().isEmpty()) {
                     response.sendRedirect("./home");
                 } else {
-                    System.out.println("else");
                     nextPage = "/WEB-INF/jsp/index.jsp";
                     request.setAttribute("errorMessage", "Nome ou senha inválidos");
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);

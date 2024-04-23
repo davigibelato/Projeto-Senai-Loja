@@ -21,7 +21,7 @@ body{
     height: 100%;
 }
 
-.container-login, .container-cadastrar{
+.container-login{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,7 +70,7 @@ body{
     font-weight: 500;
 }
 
-.btn-login, .btn-cadastrar{
+.btn-login{
     width: 120px;
     background-color: #333;
     border: none;
@@ -95,7 +95,7 @@ body{
 
 @media (min-width: 760px){
 
-    .container-login, .container-cadastrar{
+    .container-login{
         width: auto;
     }
 
@@ -130,7 +130,7 @@ body{
         color: #333;
     }
     
-    .btn-login,.btn-cadastrar{
+    .btn-login{
         width: 150px;
         background-color: #006CE1;
         border: none;
@@ -145,7 +145,7 @@ body{
         transition: 0.5s;
     }
 
-    .container-login h1, .container-cadastrar h1{
+    .container-login h1{
         color: #072ac8;
     }
 

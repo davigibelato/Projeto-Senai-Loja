@@ -34,19 +34,18 @@ public class FemininoController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         String url = "/WEB-INF/jsp/feminino.jsp";
-
-        Categoria categoriaFeminina = new Categoria();
-        categoriaFeminina.setNome("Feminino"); // Supondo que o nome da categoria feminina seja "Feminino"
-
-        ProdutoDAO dao = new ProdutoDAO();
-        List<Produto> produtos = dao.listarPorCategoria(categoriaFeminina);
-
-        request.setAttribute("produtos", produtos);
-
-        RequestDispatcher d = getServletContext().getRequestDispatcher(url);
-        d.forward(request, response);
+    
+    Categoria categoriaFeminino = new Categoria();
+    categoriaFeminino.setNome("Feminino"); // Supondo que o nome da categoria masculina seja "Masculino"
+    
+    ProdutoDAO dao = new ProdutoDAO();
+    List<Produto> produtos = dao.listarPorCategoria(categoriaFeminino);
+    
+    request.setAttribute("produtos", produtos);
+    
+    RequestDispatcher d = getServletContext().getRequestDispatcher(url);
+    d.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
