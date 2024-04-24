@@ -44,6 +44,14 @@
         <servlet-name>CalcadosController</servlet-name>
         <servlet-class>controller.CalcadosController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CadastrarProdutoController</servlet-name>
+        <servlet-class>controller.CadastrarProdutoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomeAdminController</servlet-name>
+        <servlet-class>controller.HomeAdminController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -79,6 +87,14 @@
     <servlet-mapping>
         <servlet-name>CalcadosController</servlet-name>
         <url-pattern>/calcados</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarProdutoController</servlet-name>
+        <url-pattern>/cadastrarProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeAdminController</servlet-name>
+        <url-pattern>/homeAdmin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

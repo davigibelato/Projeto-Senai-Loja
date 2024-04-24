@@ -7,19 +7,21 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.BEAN.Usuario;
-import model.DAO.UsuarioDAO;
+import model.BEAN.Categoria;
+import model.BEAN.Produto;
+import model.DAO.ProdutoDAO;
 
 /**
  *
  * @author Senai
  */
-public class LoginController extends HttpServlet {
+public class HomeAdminController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,8 +35,17 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        String url = "/WEB-INF/jsp/homeAdmin.jsp";
 
-        String url = "/WEB-INF/jsp/index.jsp";
+        Categoria categoriaDestaques = new Categoria();
+        categoriaDestaques.setNome("Destaques"); // Supondo que o nome da categoria masculina seja "Masculino"
+
+        ProdutoDAO dao = new ProdutoDAO();
+        List<Produto> produtos = dao.listarPorCategoria(categoriaDestaques);
+
+        request.setAttribute("produtos", produtos);
+
         RequestDispatcher d = getServletContext().getRequestDispatcher(url);
         d.forward(request, response);
     }
@@ -51,56 +62,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String url = request.getServletPath();
-
-        if (url.equals("/login")) {
-            String nextPage = "/WEB-INF/jsp/paginaInicial.jsp";
-
-            String username = request.getParameter("input-user");
-            String password = request.getParameter("input-senha");
-
-            // Verificar se os campos estão vazios
-            if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
-                nextPage = "/WEB-INF/jsp/index.jsp";
-                request.setAttribute("errorMessage", "Por favor, preencha todos os campos.");
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
-                dispatcher.forward(request, response);
-                return;
-            }
-
-            // Se o usuário e a senha forem "admin", redirecione para outra página
-            if (username.equals("admin") && password.equals("admin")) {
-                response.sendRedirect("./homeAdmin"); // Substitua "outraPagina" pelo URL da página desejada
-                return;
-            }
-
-            Usuario user = new Usuario();
-            UsuarioDAO valida = new UsuarioDAO();
-
-            user.setNome(username);
-            user.setSenha(password);
-
-            try {
-                Usuario userAutenticado = valida.login(user);
-
-                if (userAutenticado != null && !userAutenticado.getNome().isEmpty()) {
-                    response.sendRedirect("./home");
-                } else {
-                    nextPage = "/WEB-INF/jsp/index.jsp";
-                    request.setAttribute("errorMessage", "Nome ou senha inválidos");
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
-                    dispatcher.forward(request, response);
-                }
-            } catch (Exception e) {
-                nextPage = "/WEB-INF/jsp/index.jsp";
-                request.setAttribute("errorMessage", "Nome ou senha inválidos");
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
-                dispatcher.forward(request, response);
-            }
-        } else {
-            processRequest(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -115,7 +77,6 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
     }
 
     /**

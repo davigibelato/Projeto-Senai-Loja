@@ -69,5 +69,4 @@
         </main>
 
     </body>
-    <script src="scripts/cadastro.js" type="text/javascript"></script>
 </html>

@@ -61,7 +61,7 @@
                     </ul>
                 </div>
                 <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i> Minha conta</button>
-            </div>    
+            </div>          
         </header>
 
         <main class="main">

@@ -62,7 +62,6 @@ public class CadastroController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -78,6 +77,21 @@ public class CadastroController extends HttpServlet {
             String senha = request.getParameter("input-senha");
             String cpf = request.getParameter("input-cpf");
             String telefone = request.getParameter("input-telefone");
+
+            // Verifica se algum campo está vazio
+            if (nome == null || nome.isEmpty()
+                    || email == null || email.isEmpty()
+                    || senha == null || senha.isEmpty()
+                    || cpf == null || cpf.isEmpty()
+                    || telefone == null || telefone.isEmpty()) {
+
+                // Se algum campo estiver vazio, redireciona de volta para a página de cadastro com uma mensagem de erro
+                nextPage = "/WEB-INF/jsp/cadastrar.jsp";
+                request.setAttribute("errorMessage", "Por favor, preencha todos os campos.");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+                dispatcher.forward(request, response);
+                return;
+            }
 
             Usuario u = new Usuario();
             UsuarioDAO ud = new UsuarioDAO();
@@ -106,11 +120,6 @@ public class CadastroController extends HttpServlet {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

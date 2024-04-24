@@ -26,7 +26,7 @@
         <div class="container-1">
             <nav id="nav" class="navbar bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="./home">Gibelato Store</a>
+                    <a class="navbar-brand" href="./homeAdmin">Gibelato Store</a>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button id="btn-search" class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -47,7 +47,6 @@
                         <li><a class="dropdown-item" href="./calcados"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
                     </ul>
                 </div>
-
                 <button type="button" class="btn btn-light"><i class="fa-solid fa-star"></i> Destaques</button>
 
                 <div class="dropdown">
@@ -61,7 +60,8 @@
                     </ul>
                 </div>
                 <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i> Minha conta</button>
-            </div>          
+                <button type="button" class="btn btn-light"><i class="fa-solid fa-star"></i> Cadastrar Produto</button>
+            </div>    
         </header>
 
         <main class="main">

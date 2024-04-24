@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.DAO;
 
 import java.sql.Connection;
@@ -12,11 +7,41 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.BEAN.Usuario;
 
-/**
- *
- * @author Joao Guilherme
- */
+
 public class UsuarioDAO {
+
+    // Função para validar CPF
+    private boolean validarCPF(String cpf) {
+        // Verifica se o CPF tem 11 dígitos
+        if (cpf == null || cpf.length() != 11) {
+            return false;
+        }
+
+        // Verifica se todos os caracteres são dígitos numéricos
+        for (int i = 0; i < cpf.length(); i++) {
+            if (!Character.isDigit(cpf.charAt(i))) {
+                return false;
+            }
+        }
+
+        // Verifica se todos os caracteres são iguais (CPF inválido)
+        if ((cpf.charAt(0) == cpf.charAt(1)) && (cpf.charAt(1) == cpf.charAt(2)) &&
+                (cpf.charAt(2) == cpf.charAt(3)) && (cpf.charAt(3) == cpf.charAt(4)) &&
+                (cpf.charAt(4) == cpf.charAt(5)) && (cpf.charAt(5) == cpf.charAt(6)) &&
+                (cpf.charAt(6) == cpf.charAt(7)) && (cpf.charAt(7) == cpf.charAt(8)) &&
+                (cpf.charAt(8) == cpf.charAt(9)) && (cpf.charAt(9) == cpf.charAt(10))) {
+            return false;
+        }
+
+        // CPF válido
+        return true;
+    }
+
+    // Função para validar telefone
+    private boolean validarTelefone(String telefone) {
+        // Verifica se o telefone tem o formato (XX) XXXX-XXXX
+        return telefone.matches("\\(\\d{2}\\)\\s\\d{4}-\\d{4}");
+    }
 
     public Usuario login(Usuario user) {
         Usuario usuarioValido = new Usuario();
