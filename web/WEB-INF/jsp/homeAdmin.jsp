@@ -16,8 +16,8 @@
         <script src="https://kit.fontawesome.com/35f5de594d.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="./styles/header.css">
-        <link href="./styles/paginaInicial.css" rel="stylesheet" type="text/css"/>
+        <link href="styles/header.css" rel="stylesheet" type="text/css"/>
+        <link href="styles/paginaInicial.css" rel="stylesheet" type="text/css"/>
         <script src="https://kit.fontawesome.com/35f5de594d.js" crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
         <title>Gibelato Store</title>
@@ -37,30 +37,12 @@
 
         <header class="header">
             <div class="categorias">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-list"></i>Categorias
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="./masculino"><i class="fa-solid fa-person"></i>Masculino</a></li>
-                        <li><a class="dropdown-item" href="./feminino"><i class="fa-solid fa-person-dress"></i>Feminino</a></li>
-                        <li><a class="dropdown-item" href="./calcados"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
-                    </ul>
-                </div>
-                <button type="button" class="btn btn-light"><i class="fa-solid fa-star"></i> Destaques</button>
-
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-cart-shopping"></i>Carrinho
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="./masculino"><i class="fa-solid fa-person"></i>Masculino</a></li>
-                        <li><a class="dropdown-item" href="./feminino"><i class="fa-solid fa-person-dress"></i>Feminino</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
-                    </ul>
-                </div>
-                <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i> Minha conta</button>
-                <button type="button" class="btn btn-light"><i class="fa-solid fa-star"></i> Cadastrar Produto</button>
+                <a href="./login">
+                    <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i> Minha conta</button>
+                </a>
+                <a href="./cadastrarProduto">
+                    <button type="button" class="btn btn-light"><i class="fa-solid fa-star"></i> Cadastrar Produto</button>
+                </a>
             </div>    
         </header>
 
@@ -111,29 +93,6 @@
                     </div>
                 </div>
             </div>
-
-
-            <div class="h2-title">
-                <h2>Destaques</h2>
-            </div>
-
-            <div class="destaques">
-                <div class="card-group-des">
-                    <!-- Iterar sobre a lista de produtos e exibir cada produto -->
-                    <% for (Produto produto : (List<Produto>) request.getAttribute("produtos")) {%>
-                    <div class="card" style="width: 18rem;" id="card-des">
-                        <div class="card-img">
-                            <img src="./images/Vans/vans-1.jpg" class="card-img-top" alt="...">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title"><%= produto.getNome()%></h5>
-                            <p class="card-text">Preço = $<%= produto.getValor()%></p>
-                            <a href="./produto?id=<%= produto.getIdProduto()%>" class="btn btn-primary">Comprar</a>
-                        </div>
-                    </div>
-                    <% }%>
-                </div>
-            </div>  
         </main>
 
         <footer class="footer">

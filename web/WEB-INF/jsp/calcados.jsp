@@ -8,12 +8,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="./styles/masculino.css" rel="stylesheet" type="text/css"/>
+        <link href="styles/masculino.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/35f5de594d.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link href="./styles/header.css" rel="stylesheet" type="text/css"/>
+        <link href="styles/header.css" rel="stylesheet" type="text/css"/>
         <script src="https://kit.fontawesome.com/35f5de594d.js" crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
         <title>Gibelato Store Calçados</title>
@@ -56,7 +56,9 @@
                         <li></li>
                     </ul>
                 </div>
-                <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i> Minha conta</button>
+                <a href="./login">
+                    <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i> Minha conta</button>
+                </a>
             </div>    
         </header>
 

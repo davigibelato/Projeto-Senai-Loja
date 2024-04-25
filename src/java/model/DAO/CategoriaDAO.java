@@ -20,7 +20,7 @@ import model.BEAN.Categoria;
  */
 public class CategoriaDAO {
 
-    private List<Categoria> listarTodos() {
+    public List<Categoria> listarTodos() {
         List<Categoria> categorias = new ArrayList();
         try {
             Connection conexao = Conexao.conectar();

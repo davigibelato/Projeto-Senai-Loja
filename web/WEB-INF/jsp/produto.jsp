@@ -13,8 +13,8 @@
         <script src="https://kit.fontawesome.com/35f5de594d.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="./styles/header.css">
-        <link href="./styles/paginaInicial.css" rel="stylesheet" type="text/css"/>
+        <link href="styles/header.css" rel="stylesheet" type="text/css"/>
+        <link href="styles/paginaInicial.css" rel="stylesheet" type="text/css"/>
         <script src="https://kit.fontawesome.com/35f5de594d.js" crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
         <title>JSP Page</title>
@@ -45,7 +45,7 @@
                         <li><a class="dropdown-item" href="#"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
                     </ul>
                 </div>
-                
+
                 <button type="button" class="btn btn-light"><i class="fa-solid fa-star"></i> Destaques</button>
 
                 <div class="dropdown">
@@ -58,7 +58,9 @@
                         <li><a class="dropdown-item" href="#"><i class="fa-solid fa-shoe-prints"></i>Calçados</a></li>
                     </ul>
                 </div>
-                <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i> Minha conta</button>
+                <a href="./login">
+                    <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i> Minha conta</button>
+                </a>
             </div>    
         </header>
 
