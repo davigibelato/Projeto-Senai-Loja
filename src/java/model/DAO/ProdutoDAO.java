@@ -7,6 +7,7 @@ package model.DAO;
 
 import java.sql.Connection;
 import conexao.Conexao;
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,7 +40,11 @@ public class ProdutoDAO {
                 p.setNome(rs.getString("nome"));
                 p.setCategoria(rs.getInt("categoria"));
                 p.setValor(rs.getFloat("valor"));
-                p.setImagem(rs.getBlob("imagem"));
+                Blob imagemBlob = rs.getBlob("imagem");
+                if (imagemBlob != null) {
+                    byte[] imagemBytes = imagemBlob.getBytes(1, (int) imagemBlob.length());
+                    p.setImagemBytes(imagemBytes);
+                }
                 produtos.add(p);
             }
 
@@ -72,7 +77,11 @@ public class ProdutoDAO {
                 p.setNome(rs.getString("nome"));
                 p.setCategoria(rs.getInt("categoria"));
                 p.setValor(rs.getFloat("valor"));
-                p.setImagem(rs.getBlob("imagem"));
+                Blob imagemBlob = rs.getBlob("imagem");
+                if (imagemBlob != null) {
+                    byte[] imagemBytes = imagemBlob.getBytes(1, (int) imagemBlob.length());
+                    p.setImagemBytes(imagemBytes);
+                }
                 produtos.add(p);
             }
 
@@ -106,7 +115,11 @@ public class ProdutoDAO {
                 p.setNome(rs.getString("nome"));
                 p.setCategoria(rs.getInt("categoria"));
                 p.setValor(rs.getFloat("valor"));
-                p.setImagem(rs.getBlob("imagem"));
+                Blob imagemBlob = rs.getBlob("imagem");
+                if (imagemBlob != null) {
+                    byte[] imagemBytes = imagemBlob.getBytes(1, (int) imagemBlob.length());
+                    p.setImagemBytes(imagemBytes);
+                }
                 produtos.add(p);
             }
             rs.close();
@@ -136,7 +149,11 @@ public class ProdutoDAO {
                 p.setNome(rs.getString("nome"));
                 p.setCategoria(rs.getInt("categoria"));
                 p.setValor(rs.getFloat("valor"));
-                p.setImagem(rs.getBlob("imagem"));
+                Blob imagemBlob = rs.getBlob("imagem");
+                if (imagemBlob != null) {
+                    byte[] imagemBytes = imagemBlob.getBytes(1, (int) imagemBlob.length());
+                    p.setImagemBytes(imagemBytes);
+                }
                 produtos.add(p);
             }
 
@@ -149,73 +166,6 @@ public class ProdutoDAO {
 
         }
         return produtos;
-    }
-
-    public Produto readById(int id) {
-        Produto p = new Produto();
-        try {
-            Connection conexao = Conexao.conectar();
-            PreparedStatement stmt = null;
-            ResultSet rs = null;
-
-            stmt = conexao.prepareStatement("SELECT * FROM produto WHERE idProduto = ?");
-            stmt.setInt(1, id);
-            rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                p.setIdProduto(rs.getInt("idProduto"));
-                p.setNome(rs.getString("nome"));
-                p.setCategoria(rs.getInt("categoria"));
-                p.setValor(rs.getFloat("valor"));
-                p.setImagem(rs.getBlob("imagem"));
-            }
-            rs.close();
-            stmt.close();
-            conexao.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return p;
-    }
-
-    public void create(Produto p) {
-        try {
-            Connection conexao = Conexao.conectar();
-            PreparedStatement stmt = null;
-
-            stmt = conexao.prepareStatement("INSERT INTO produto (nome, categoria, valor, imagem) VALUES (?, ?, ?, ?)");
-            stmt.setString(1, p.getNome());
-            stmt.setInt(2, p.getCategoria());
-            stmt.setFloat(3, p.getValor());
-            stmt.setBlob(4, p.getImagem());
-            stmt.executeUpdate();
-
-            stmt.close();
-            conexao.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void update(Produto p) {
-        try {
-            Connection conexao = Conexao.conectar();
-            PreparedStatement stmt = null;
-
-            stmt = conexao.prepareStatement("UPDATE produto SET nome = ?, categoria = ?, valor = ?, imagem = ? WHERE idProduto = ?");
-            stmt.setString(1, p.getNome());
-            stmt.setInt(2, p.getCategoria());
-            stmt.setFloat(3, p.getValor());
-            stmt.setBlob(4, p.getImagem());
-            stmt.setInt(5, p.getIdProduto());
-
-            stmt.executeUpdate();
-
-            stmt.close();
-            conexao.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     public void delete(int id) {
@@ -238,6 +188,56 @@ public class ProdutoDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean inserirProduto(Produto produto) {
+        try (Connection conexao = Conexao.conectar();
+                PreparedStatement ps = conexao.prepareStatement("INSERT INTO produto (nome, valor, categoria, imagem) VALUES (?, ?, ?, ?)")) {
+
+            // Defina os parâmetros do PreparedStatement com os valores do produto
+            ps.setString(1, produto.getNome());
+            ps.setFloat(2, produto.getValor());
+            ps.setInt(3, produto.getCategoria());
+            ps.setBytes(4, produto.getImagemBytes()); // Defina a imagem como array de bytes
+
+            // Execute o PreparedStatement
+            int linhasAfetadas = ps.executeUpdate();
+
+            // Verifique se a inserção foi bem-sucedida (verifique se uma linha foi afetada)
+            return linhasAfetadas > 0;
+
+        } catch (SQLException e) {
+            // Você pode lidar com a exceção aqui, talvez registrando-a ou lançando-a novamente
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public Produto readById(int id) {
+        Produto p = null;
+        try (Connection conexao = Conexao.conectar();
+                PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM produto WHERE idProduto = ?")) {
+
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    p = new Produto();
+                    p.setIdProduto(rs.getInt("idProduto"));
+                    p.setNome(rs.getString("nome"));
+                    p.setCategoria(rs.getInt("categoria"));
+                    p.setValor(rs.getFloat("valor"));
+
+                    Blob imagemBlob = rs.getBlob("imagem");
+                    if (imagemBlob != null) {
+                        byte[] imagemBytes = imagemBlob.getBytes(1, (int) imagemBlob.length());
+                        p.setImagemBytes(imagemBytes);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return p;
     }
 
 }

@@ -68,7 +68,7 @@
             <div class="container">
                 <div class="right-box">
                     <div class="main-image-box">
-                        <img src="${produto.imagem}" alt="${produto.nome}" class="main-image"/>
+                        <img src="data:image/jpeg;base64,${produto.imagemBase64}" class="card-img-top" alt="${produto.nome}">
                     </div>
                 </div>
                 <div class="details-box">

@@ -100,8 +100,7 @@ a{
     text-align: center; /* Alinhando o texto ao centro */
 }
 
-#card-des img{
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
+.card-group-des .card img{
+    width: 230px;
+    height: 290px;
 }

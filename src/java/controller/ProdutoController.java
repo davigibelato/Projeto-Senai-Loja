@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Base64;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,6 +40,10 @@ public class ProdutoController extends HttpServlet {
         Produto produto = dao.readById(id);
         System.out.println("PRODUTO NOME:" + produto.getNome());
         request.setAttribute("produto", produto);
+        if (produto.getImagemBytes() != null) {
+            String imagemBase64 = Base64.getEncoder().encodeToString(produto.getImagemBytes());
+            produto.setImagemBase64(imagemBase64);
+        }
         String url = "/WEB-INF/jsp/produto.jsp";
         
         RequestDispatcher d = getServletContext().getRequestDispatcher(url);

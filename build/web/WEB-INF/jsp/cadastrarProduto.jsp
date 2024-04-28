@@ -48,38 +48,30 @@
                 <h1>Cadastro de Produtos</h1>
             </div> 
             <div class="form-cadastro-produtos">
-                <form action="CadastroProdutoController" method="post" enctype="multipart/form-data">
-                    <div class="input-box">
-                        <select name="idProduto" id="idProduto">
-                            <c:forEach items="${produtos}" var="produto">
-                                <option value="">${produto.idProduto}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
+                <form action="Comprar" method="post" name="frmCadastro" enctype="multipart/form-data">
                     <div class="input-box">
                         <input type="text" name="input-nome" id="input-nome" placeholder="Nome">
                     </div>
                     <div class="input-box">
-                        <input type="text" name="input-valor" id="input-valor" placeholder="Valor">
+                        <input type="number" name="input-valor" id="input-valor" placeholder="Valor">
                     </div>
                     <div class="input-box">
-                        <select name="categoria" id="categoria">
-                            <c:forEach items="${categorias}" var="categoria">
-                                <option value="">${categoria.nome}</option>
-                            </c:forEach>
-                        </select>
+                        <label for="categoria">Categoria</label>
+                        <input type="text" id="categoria" name="categoria">
                     </div>
-                    <div class="input-image">
-                        <label for="image">Imagem:</label>
-                        <input type="file" name="image" id="image">
-                        <input type="submit" value="Adicionar imagem">
+                    <label for="imagem">Imagem</label>
+                    <input type="file" id="imagem" name="imagem" required accept="image/*">
+                    <div class="right-box">
+                        <div class="image-box">
+                            <img src="" alt="Imagem do produto" id="mainImage" class="main-image">
+                        </div>
+                        <div class="comprar">         
+                            <div class="listaTamanho">
+                                <button id="btn" type="submit" class="btn btn-success">Comprar</button>
+                            </div>
+                        </div>
                     </div>
                 </form>
-                <div class="right-box">
-                    <div class="image-box">
-                        <img src="" alt="Imagem do produto" id="mainImage" class="main-image">
-                    </div>
-                </div>
             </div>
         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

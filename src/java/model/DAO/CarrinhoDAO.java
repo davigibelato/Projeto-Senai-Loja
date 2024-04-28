@@ -6,6 +6,7 @@
 package model.DAO;
 
 import conexao.Conexao;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,7 +50,11 @@ public class CarrinhoDAO {
                 p.setNome(rs.getString("nome"));
                 p.setValor(rs.getFloat("valor"));
                 p.setCategoria(rs.getInt("categoria"));
-                p.setImagem(rs.getBlob("imagem"));
+                Blob imagemBlob = rs.getBlob("imagem");
+                if (imagemBlob != null) {
+                    byte[] imagemBytes = imagemBlob.getBytes(1, (int) imagemBlob.length());
+                    p.setImagemBytes(imagemBytes);
+                }
                 produtos.add(p);
             }
             

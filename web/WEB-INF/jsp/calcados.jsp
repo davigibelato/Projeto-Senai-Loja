@@ -66,14 +66,15 @@
 
             <div class="container">
                 <c:forEach items="${produtos}" var="produto">
-                        <div class="card" style="width: 18rem;">
-                            <img src="./images/Vans/vans-1.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">${produto.nome}</h5>
-                                <p class="card-text">Preco = $${produto.valor}</p>
-                                <a href="./produto?id=${produto.idProduto}" class="btn btn-primary">Comprar/Add Carrinho</a>
-                            </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="data:image/jpeg;base64,${produto.imagemBase64}" class="card-img-top" alt="${produto.nome}">
+
+                        <div class="card-body">
+                            <h5 class="card-title">${produto.nome}</h5>
+                            <p class="card-text">Preço = $${produto.valor}</p>
+                            <a href="./produto?id=${produto.idProduto}" class="btn btn-primary">Comprar/Add Carrinho</a>
                         </div>
+                    </div>
                 </c:forEach>
             </div>
         </main>

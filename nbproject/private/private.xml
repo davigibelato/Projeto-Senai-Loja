@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Davi/Desktop/projeto/Projeto-Senai-Loja/web/redirect.jsp</file>
-            <file>file:/C:/Users/Davi/Desktop/projeto/Projeto-Senai-Loja/web/WEB-INF/jsp/homeAdmin.jsp</file>
-            <file>file:/C:/Users/Davi/Desktop/projeto/Projeto-Senai-Loja/src/java/controller/CadastrarProdutoController.java</file>
-            <file>file:/C:/Users/Davi/Desktop/projeto/Projeto-Senai-Loja/web/WEB-INF/jsp/masculino.jsp</file>
-            <file>file:/C:/Users/Davi/Desktop/projeto/Projeto-Senai-Loja/web/WEB-INF/jsp/cadastrarProduto.jsp</file>
+            <file>file:/C:/Users/Davi/Desktop/loja/Projeto-Senai-Loja/src/java/controller/ProdutoController.java</file>
+            <file>file:/C:/Users/Davi/Desktop/loja/Projeto-Senai-Loja/web/WEB-INF/jsp/produto.jsp</file>
+            <file>file:/C:/Users/Davi/Desktop/loja/Projeto-Senai-Loja/src/java/model/DAO/ProdutoDAO.java</file>
         </group>
     </open-files>
 </project-private>

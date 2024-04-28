@@ -10,27 +10,23 @@ body{
 }
 
 .right-box{
-    width: 50%;
+    padding: 0;
+    margin: 0;
     border: 1px solid black;
-    border-radius: 10px;
 }
 
 .main-image-box{
-   padding: 30px 0px;
    width: 100%;
    display: flex;
    align-items: center;
    justify-content: center; 
 }
-.main-image{
-    height: 390px;
-    width: auto;
+
+.main-image-box img {
+    width: 450px;
+    height: 500px;
 }
 
-.image{
-    height: 90%;
-    width: auto;
-}
 
 .details-box{
     width: 50%;
@@ -42,4 +38,3 @@ body{
     border: none;
     width: 35%;
 }
-

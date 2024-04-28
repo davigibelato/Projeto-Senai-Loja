@@ -96,6 +96,10 @@
         <servlet-name>HomeAdminController</servlet-name>
         <url-pattern>/homeAdmin</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarProdutoController</servlet-name>
+        <url-pattern>/Comprar</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

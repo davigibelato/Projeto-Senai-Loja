@@ -3,7 +3,7 @@
     Created on : 15/04/2024, 15:09:52
     Author     : Senai
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
 <%@page import="model.BEAN.Produto"%>
 <%@page import="model.BEAN.Produto"%>
@@ -122,18 +122,16 @@
             <div class="destaques">
                 <div class="card-group-des">
                     <!-- Iterar sobre a lista de produtos e exibir cada produto -->
-                    <% for (Produto produto : (List<Produto>) request.getAttribute("produtos")) {%>
-                    <div class="card" style="width: 18rem;" id="card-des">
-                        <div class="card-img">
-                            <img src="./images/Vans/vans-1.jpg" class="card-img-top" alt="...">
-                        </div>
+                    <c:forEach items="${produtos}" var="produto">
+                    <div class="card" style="width: 18rem;">
+                        <img src="data:image/jpeg;base64,${produto.imagemBase64}" class="card-img-top" alt="${produto.nome}">
                         <div class="card-body">
-                            <h5 class="card-title"><%= produto.getNome()%></h5>
-                            <p class="card-text">Preço = $<%= produto.getValor()%></p>
-                            <a href="./produto?id=<%= produto.getIdProduto()%>" class="btn btn-primary">Comprar</a>
+                            <h5 class="card-title">${produto.nome}</h5>
+                            <p class="card-text">Preço = $${produto.valor}</p>
+                            <a href="./produto?id=${produto.idProduto}" class="btn btn-primary">Comprar/Add Carrinho</a>
                         </div>
                     </div>
-                    <% }%>
+                    </c:forEach>
                 </div>
             </div>  
         </main>

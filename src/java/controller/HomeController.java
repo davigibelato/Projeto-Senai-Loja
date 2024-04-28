@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Base64;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,14 +36,20 @@ public class HomeController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = "/WEB-INF/jsp/paginaInicial.jsp";
-
+        
         Categoria categoriaDestaques = new Categoria();
-        categoriaDestaques.setNome("Destaques"); // Supondo que o nome da categoria masculina seja "Masculino"
-
+        categoriaDestaques.setNome("Destaques");
         ProdutoDAO dao = new ProdutoDAO();
-        List<Produto> produtos = dao.listarPorCategoria(categoriaDestaques);
 
-        request.setAttribute("produtos", produtos);
+        List<Produto> produto = dao.listarPorCategoria(categoriaDestaques);
+        for (int i = 0; i < produto.size(); i++) {
+            if (produto.get(i).getImagemBytes() != null) {
+                String imagemBase64 = Base64.getEncoder().encodeToString(produto.get(i).getImagemBytes());
+                produto.get(i).setImagemBase64(imagemBase64);
+            }
+
+        }
+        request.setAttribute("produtos", produto);
 
         RequestDispatcher d = getServletContext().getRequestDispatcher(url);
         d.forward(request, response);

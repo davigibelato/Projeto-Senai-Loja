@@ -13,17 +13,21 @@ public class Produto {
     private int categoria;
     private String nome;
     private Float valor;
-    private Blob imagem;
+    private byte[] imagemBytes;
+    private String imagemBase64;
+    
+
 
     public Produto() {
     }
 
-    public Produto(int idProduto, int categoria, String nome, Float valor, Blob imagem) {
+    public Produto(int idProduto, int categoria, String nome, Float valor, byte[] imagemBytes, String imagemBase64) {
         this.idProduto = idProduto;
         this.categoria = categoria;
         this.nome = nome;
         this.valor = valor;
-        this.imagem = imagem;
+        this.imagemBytes = imagemBytes;
+        this.imagemBase64 = imagemBase64;
     }
 
     public int getIdProduto() {
@@ -58,13 +62,21 @@ public class Produto {
         this.valor = valor;
     }
 
-    public Blob getImagem() {
-        return imagem;
+    public byte[] getImagemBytes() {
+        return imagemBytes;
     }
 
-    public void setImagem(Blob imagem) {
-        this.imagem = imagem;
+    public void setImagemBytes(byte[] imagemBytes) {
+        this.imagemBytes = imagemBytes;
     }
-    
+
+    public String getImagemBase64() {
+        return imagemBase64;
+    }
+
+    public void setImagemBase64(String imagemBase64) {
+        this.imagemBase64 = imagemBase64;
+    }
+
     
 }
